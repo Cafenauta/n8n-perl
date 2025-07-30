@@ -1,7 +1,9 @@
 FROM n8nio/n8n:latest
 
 USER root
-RUN apt-get update && apt-get install -y perl cpanminus \
-  && cpanm --notest JSON LWP::Simple
+
+# Alpine-compatible Perl install
+RUN apk update && \
+    apk add perl perl-utils perl-cpan perl-json perl-libwww
 
 USER node
