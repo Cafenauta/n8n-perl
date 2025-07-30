@@ -2,8 +2,8 @@ FROM n8nio/n8n:latest
 
 USER root
 
-# Alpine-compatible Perl install
-RUN apk update && \
-    apk add perl perl-utils perl-cpan perl-json perl-libwww
+# Install Perl and essential modules in Alpine
+RUN apk update --no-cache && \
+    apk add --no-cache perl perl-json perl-lwp
 
 USER node
