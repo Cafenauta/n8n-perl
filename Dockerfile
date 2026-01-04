@@ -2,7 +2,8 @@ FROM n8nio/n8n:latest
 
 USER root
 
-RUN apk update --no-cache && \
-    apk add --no-cache perl perl-json perl-libwww perl-lwp-protocol-https
+RUN apt-get update && \
+    apt-get install -y perl libjson-perl libwww-perl liblwp-protocol-https-perl && \
+    rm -rf /var/lib/apt/lists/*
 
 USER node
