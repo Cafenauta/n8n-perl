@@ -1,13 +1,9 @@
-FROM n8nio/n8n:latest
+FROM n8nio/n8n:latest-debian
 
 USER root
 
-RUN cat /etc/os-release
-
-
-RUN /sbin/apk update --no-cache && \
-    /sbin/apk add --no-cache perl perl-json perl-libwww perl-lwp-protocol-https
-
-
+RUN apt-get update && \
+    apt-get install -y perl libjson-perl libwww-perl liblwp-protocol-https-perl && \
+    rm -rf /var/lib/apt/lists/*
 
 USER node
