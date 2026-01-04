@@ -2,8 +2,12 @@ FROM n8nio/n8n:latest
 
 USER root
 
-RUN apt-get update -y && \
-    apt-get install -y perl libjson-perl libwww-perl liblwp-protocol-https-perl && \
-    rm -rf /var/lib/apt/lists/*
+RUN cat /etc/os-release
+
+
+RUN /sbin/apk update --no-cache && \
+    /sbin/apk add --no-cache perl perl-json perl-libwww perl-lwp-protocol-https
+
+
 
 USER node
