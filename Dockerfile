@@ -2,7 +2,7 @@ FROM n8nio/n8n:latest
 
 USER root
 
-RUN apt-get update && \
+RUN apt-get update -y && \
     apt-get install -y perl libjson-perl libwww-perl liblwp-protocol-https-perl && \
     rm -rf /var/lib/apt/lists/*
 
